@@ -3,6 +3,9 @@ import './App.css';
 
 function App() {
   return (
+    //create navigation bar
+
+    
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -18,6 +21,11 @@ function App() {
           Learn React
         </a>
       </header>
+      <footer className="App-footer">
+        <p>
+          <a href="#">Back to top</a>
+        </p>
+      </footer>
     </div>
   );
 }
