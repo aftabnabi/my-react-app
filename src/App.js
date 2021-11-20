@@ -1,38 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
-function NavBar(){
-  return <div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import News from './pages/news';
+import About from './pages/about';
+import Faq from './pages/faq';
+import Footer from './footer';
+import Home from './pages/home';
 
-}
+function NavBar(){
+  return <Router>
+    <div class="topnav" id="myTopnav">
+    <Link to="/">Home</Link>
+    <Link to="/about">About</Link>
+    <Link to="/News">News</Link>
+    <Link to="/faq">FAQ</Link>
+    <Link to={<myFunction />}>
+    
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </Link>
+    <SearchBar />
+  </div>
+  <Switch>
+    <Route exact path="/"  component={Home}/>
+    <Route path="/about" component={About} />
+    <Route path="/news" component={News} />
+    <Route path="/faq" component={Faq} />
+  </Switch>
+  </Router>
+  }
+
 //create search bar component
 function SearchBar(){
   return <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
 }
-//create main content component
-function MainContent(){
-  return (
-  <>
-  <div className="jumbotron">
-    <h1 className="display-4">Hello, world!</h1>
-    <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr className="my-4"/>
-    <p>It uses utility classes for typography and spacing to space content out within the larger container
-      </p>
-      <p className="lead">
-        <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
-        </div>
-        </>
-        );
-}
+
 
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
@@ -50,24 +52,10 @@ function App() {
 
       <div className="App">
           <NavBar />
-          <SearchBar />
-       
-        <MainContent />
-      </div>
-      
-      <footer className="App-footer">
-      
-       <div class="footer-logo">
-       <img class="App-logo" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="google logo"/>
        </div>
-       <div class="footer-menu">
-       <ul class="footer-menu-ul">
-       <li><a href="#">About</a></li>
-       <li><a href="#">FAQ</a></li>
-       <li><a href="#">Privacy & Terms</a></li>
-       </ul>
-       </div>
-       </footer></>
+       <Footer />
+      </>
+      
 );
 }
 
