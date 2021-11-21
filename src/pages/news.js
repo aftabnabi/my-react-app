@@ -11,7 +11,7 @@ export default class News extends React.Component {
   }
 
   render() {
-    console.log(this.state.news);
+    
     return (
       <div>
         <div className="news-list">

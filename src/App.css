@@ -112,3 +112,7 @@
     text-align: left;
   }
 }
+.jumbotron{
+  margin:auto;
+  padding:0;
+}

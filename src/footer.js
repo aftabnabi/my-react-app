@@ -6,18 +6,19 @@ import News from './pages/news';
 import About from './pages/about';
 import Faq from './pages/faq';
 import React from 'react';
-
+import Home from './pages/home';
 
 class Footer extends React.Component {
   render() {
     return (
-      <div>
-  <Router>
-    <div>
-      <nav>
+    <div className="App-footer">
+      <nav className="footer-menu">
         <ul>
           <li>
-            <Link to="/">News</Link>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/news">News</Link>
           </li>
           <li>
             <Link to="/about">About</Link>
@@ -28,14 +29,10 @@ class Footer extends React.Component {
         </ul>
       </nav>
 
-      <Switch>
-        <Route exact path="/" component={News} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/faq" component={Faq} />
-      </Switch>
+      
     </div>
-  </Router>
-</div>
+  
+
     );
   }
 }

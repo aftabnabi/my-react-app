@@ -7,28 +7,36 @@ import About from './pages/about';
 import Faq from './pages/faq';
 import Footer from './footer';
 import Home from './pages/home';
+import Counter from './pages/counter';
+import Contact from './pages/contact';
+import routePaths from './enums/routePaths';
+
+
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+
 
 function NavBar(){
-  return <Router>
-    <div class="topnav" id="myTopnav">
+  return (<div className="topnav" id="myTopnav">
     <Link to="/">Home</Link>
     <Link to="/about">About</Link>
     <Link to="/News">News</Link>
+    <Link to="/counter">Counter</Link>
+    <Link to="/contact">Contact</Link>
     <Link to="/faq">FAQ</Link>
-    <Link to={<myFunction />}>
+    <Link to="#" onClick={()=>{if (document.getElementById("myTopnav").className === "topnav") {
+    document.getElementById("myTopnav").className += " responsive";
+  } else {
+    document.getElementById("myTopnav").className = "topnav";
+  }
+}}>
+  
     
-      <i class="fa fa-bars" aria-hidden="true"></i>
+      <i className="fa fa-bars" aria-hidden="true"></i>
     </Link>
     <SearchBar />
   </div>
-  <Switch>
-    <Route exact path="/"  component={Home}/>
-    <Route path="/about" component={About} />
-    <Route path="/news" component={News} />
-    <Route path="/faq" component={Faq} />
-  </Switch>
-  </Router>
-  }
+  
+  );}
 
 //create search bar component
 function SearchBar(){
@@ -36,24 +44,25 @@ function SearchBar(){
 }
 
 
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
 function App() {
   return (
     <>
-
-      <div className="App">
+    <Router>
+    <div className="App">
           <NavBar />
        </div>
-       <Footer />
+      
+<Switch>
+    <Route exact path={routePaths.HOME}  component={Home}/>
+    <Route path={routePaths.ABOUT} component={About} />
+    <Route path={routePaths.NEWS} component={News} />
+    <Route path={routePaths.FAQ} component={Faq} />
+    <Route path={routePaths.COUNTER} component={Counter} />
+    <Route path={routePaths.CONTACT} component={Contact} />
+  </Switch>
+  <Footer />
+  </Router>
+   
       </>
       
 );
