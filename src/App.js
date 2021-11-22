@@ -1,3 +1,5 @@
+import React, { Component, useState } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import ReactDOM from 'react-dom';
@@ -10,7 +12,9 @@ import Home from './pages/home';
 import Counter from './pages/counter';
 import Contact from './pages/contact';
 import routePaths from './enums/routePaths';
-
+import Dashboard from './components/Dashboard/Dashboard';
+import Preferences from './components/Preferences/Preferences';
+import Login from './components/Login/Login.js';
 
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 
@@ -23,6 +27,8 @@ function NavBar(){
     <Link to="/counter">Counter</Link>
     <Link to="/contact">Contact</Link>
     <Link to="/faq">FAQ</Link>
+    <Link to="/dashboard">Dashboard</Link>
+    <Link to="/login">Login</Link>
     <Link to="#" onClick={()=>{if (document.getElementById("myTopnav").className === "topnav") {
     document.getElementById("myTopnav").className += " responsive";
   } else {
@@ -45,6 +51,12 @@ function SearchBar(){
 
 
 function App() {
+  const [token, setToken] = useState();
+
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
+
   return (
     <>
     <Router>
@@ -59,6 +71,9 @@ function App() {
     <Route path={routePaths.FAQ} component={Faq} />
     <Route path={routePaths.COUNTER} component={Counter} />
     <Route path={routePaths.CONTACT} component={Contact} />
+    <Route path={routePaths.DASHBOARD} component={Dashboard} />
+    <Route path={routePaths.PREFERENCE} component={Preferences} />
+    <Route path={routePaths.LOGIN} component={Login} />
   </Switch>
   <Footer />
   </Router>
